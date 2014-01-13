@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chapter 2</title>
+    <script>
+        // 변수를 선언합니다.
+        var header = document.getElementById('header');
+
+        // 클릭 이벤트를 연결합니다.
+        header.onclick = function () {
+            var self = this;
+            setInterval(function () {
+                self.innerHTML += '★';
+            }, 1000);
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

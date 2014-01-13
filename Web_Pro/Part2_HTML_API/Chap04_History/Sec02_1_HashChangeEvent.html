@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>해시 변경 이벤트</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code18
+			// hash : #어쩌구 부분
+			// hashchange : 해시 변경을 감지함.
+			// location.hash : 현재 해시를 가져옴
+			window.addEventListener('hashchange', function() {
+				alert(location.hash);
+			});
+		</script>
+	</head>
+	<body>
+		<a href="#point_a">Move to Point_A</a>
+		<a href="#point_b">Move to Point_B</a>
+	</body>
+</html>

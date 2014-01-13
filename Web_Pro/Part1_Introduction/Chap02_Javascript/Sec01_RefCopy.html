@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>값 복사와 참조 복사</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code01
+			// 값 복사
+			document.write('Code 01<br />');
+			var a = 10;
+			var b = a;
+
+			a += 20;
+
+			document.write('a: ' + a + '<br />');
+			document.write('b: ' + b + '<br />');
+
+			// Code02
+			// 참조 복사
+			document.write('<br />Code 02<br />');
+			var c = {};
+			var d = c;
+
+			c.value = 10;
+
+			document.write('c: ' + JSON.stringify(c) + '<br />');
+			document.write('d: ' + JSON.stringify(d) + '<br />');
+
+			// Code03
+			// 기본 자료형에 속성 추가
+			// 속성은 객체에 추가할 수 있는 것이지 기본 자료형에 추가할 수 있는 것이 아니다!
+			// 그러므로 undefined
+			document.write('<br />Code 03<br />');
+			a.number = 10;
+			document.write('a.number: ' + a.number + '<br />');
+			document.write('b.number: ' + b.number + '<br />');
+
+			// Code04
+			// 객체에 속성 추가
+			document.write('<br />Code 04<br />');
+			c.number = 10;
+			document.write('c.number: ' + c.number + '<br />');
+			document.write('d.number: ' + d.number + '<br />');
+
+			// Code05
+			// 함수를 사용한 객체 속성 추가
+			// object, otherObject, parameterObject는 모두 한 인스턴스를 참조
+			document.write('<br />Code 05<br />');
+			var object = {};
+			var otherObject = object;
+			var change = function (parameterObject) {
+				parameterObject.number = 10;
+			};
+
+			change(otherObject);
+
+			document.write(JSON.stringify(object) + '<br />');
+
+			// Code06
+			// Deep Copy : clone()
+			document.write('<br />Code 06<br />');
+			var clone = function (object) {
+				var output = {};
+				for(var key in object) {
+					output[key] = object[key];
+				}
+				return output;
+			};
+
+			// Code07
+			// 콜백 함수를 사용한 속성 추가
+			document.write('<br />Code 07<br />');
+			var array = [{}, {}];
+			array.forEach(function (item, index) {
+				item.idx = index;
+			});
+			document.write(JSON.stringify(array) + '<br />');
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

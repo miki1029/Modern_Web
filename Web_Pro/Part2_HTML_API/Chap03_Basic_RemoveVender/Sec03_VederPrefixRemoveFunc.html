@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>벤더 프리픽스 제거 함수</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code10
+			// 변수 prefixes 또는 함수 capitalize를 재정의하면 문제가 됨.->클로저 사용 보완(Code11)
+			/*
+			var prefixes = ['webkit', 'ms', 'moz', 'o'];
+			
+			var capitalize = function(name) {
+				return name.substr(0,1).toUpperCase() + name.substr(1);
+			};
+			
+			var removePrefix = function(object, name) {
+				prefixes.forEach(function(prefix) {
+					object[name] = object[name] || object[prefix + capitalize(name)];
+				});
+			};*/
+			
+			// Code 11 클로저를 이용하여 보완
+			var removePrefix = (function() {
+				var prefixes = ['webkit', 'ms', 'moz', 'o'];
+				
+				var capitalize = function(name) {
+					return name.substr(0,1).toUpperCase() + name.substr(1);
+				};
+				
+				return function(object, name) {
+					//alert(object + ',' + name);
+					prefixes.forEach(function(prefix) {
+						object[name] = object[name] || object[prefix + capitalize(name)];
+					});
+				};
+			})();
+		</script>
+		<script>
+			removePrefix(window, 'URL');
+			removePrefix(navigator, 'getUserMedia');
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

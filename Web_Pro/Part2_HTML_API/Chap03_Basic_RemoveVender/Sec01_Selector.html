@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>선택자</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code03
+			window.addEventListener('load', function() {				
+				// 첫 번째 태그만 선택
+				var header = document.querySelector('h1');
+
+				header.style.color = 'white';
+				header.style.backgroundColor = 'black';
+				
+				// Code04
+				// 모든 태그를 선택하여 배열로 반환
+				var allHeader = document.querySelectorAll('h1');
+				
+				allHeader[0].style.fontFamily = 'Helvetica';
+				allHeader[1].style.color = 'blue';
+				allHeader[1].style.backgroundColor = 'yellow';
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Header</h1>
+		<h1>Header</h1>
+	</body>
+</html>

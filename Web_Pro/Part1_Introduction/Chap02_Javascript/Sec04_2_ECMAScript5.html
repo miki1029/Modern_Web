@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>속성 추가</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code19 ECMAScript5 객체 속성(메소드) 추가
+			Object.defineProperties(Object.prototype, {
+				iterate: {
+					value: function(callback) {
+						for(var key in this) {
+							callback(key, this[key], this);
+						}
+					}
+				}
+			});
+			
+			({
+				name: 'miki',
+				hobby: ['basketball', 'coding']
+			}).iterate(function(key, item) {
+				console.log(key, item);
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Strict 모드</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code21
+			'use strict';
+			var object = {
+				one: 10,	// 쓸데없는 코드
+				one: 20
+			};
+			console.log(object);
+			
+			// Code22 함수 단위 적용
+			(function() {
+				'use strict';
+				var object2 = {
+					two: 10,	// 쓸데없는 코드
+					two: 20
+				};
+				console.log(object2);
+			})();
+			
+			// 이 외에도 delete 키워드로 존재하지 않는 속성을 제거하는 경우
+			// 함수의 매개변수 이름을 같게 입력했을 경우 등
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

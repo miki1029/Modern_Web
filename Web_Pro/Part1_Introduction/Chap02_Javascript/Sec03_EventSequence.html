@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>이벤트 순서</title>
+		<meta charset='utf-8' />
+	</head>
+	<body>
+		<textarea id="textarea"></textarea>
+		<script>
+			var ENTER = 13;
+			var textarea = document.getElementById('textarea');
+			
+			// Code13 이벤트 발생->이벤트 리스터 실행->기본 이벤트 실행
+			// 기본 이벤트인 엔터 입력이 더 늦게 발생하여 한 행이 개행되는 문제점이 있음
+			/*
+			textarea.onkeypress = function(event) {
+				if(event.keyCode == ENTER && event.shiftKey == false) {
+					this.value = '';
+				}
+			};*/
+			
+			// Code14
+			// Throttle(스로틀) : setTimeout() 함수로 이벤트 순서를 변경하는 기술
+			/*
+			textarea.onkeypress = function(event) {
+				if(event.keyCode == ENTER && event.shiftKey == false) {
+					var self = this;
+					// 타이머 이벤트를 연결
+					setTimeout(function () {
+						self.value = '';
+					}, 0);
+				}
+			};*/
+			
+			// Code15
+			// 기본 이벤트 제거
+			textarea.onkeypress = function(event) {
+				if(event.keyCode == ENTER && event.shiftKey == false) {
+					this.value = '';
+					// 기본 이벤트를 제거
+					return false;
+				}
+			};
+		</script>
+	</body>
+</html>

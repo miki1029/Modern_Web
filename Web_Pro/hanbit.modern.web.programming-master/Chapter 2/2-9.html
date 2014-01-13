@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function</title>
+</head>
+<body>
+    <h1 id="header">Start Timer : </h1>
+    <script>
+        // 변수를 선언합니다.
+        var header = document.getElementById('header');
+
+        // 클릭 이벤트를 연결합니다.
+        header.onclick = function () {
+            alert(this);
+            setTimtout(function () {
+                alert(this);
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

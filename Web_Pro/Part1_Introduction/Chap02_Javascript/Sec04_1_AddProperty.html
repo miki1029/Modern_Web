@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>속성 추가</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code16 속성 동적 추가
+			var object = {};
+			
+			object.name = 'miki';
+			object.hobby = ['basketball', 'coding'];
+			
+			// Code17 메소드 동적 추가
+			Object.prototype.iterate = function(callback) {
+				for(var key in this) {
+					callback(key, this[key], this);
+				}
+			};
+			
+			// Code18 프로토타입에 속성 추가의 문제점
+			// Code17에서 이어짐
+			// name, hobby, iterate function 이 출력됨.
+			// iterate function이 출력되는 것은 분명 문제가 되는 부분.
+			// ECMAScript5의 메소드로 문제 해결(다음 파일)
+			({
+				name: 'miki',
+				hobby: ['basketball', 'coding']
+			}).iterate(function(key, item) {
+				console.log(key, item);
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

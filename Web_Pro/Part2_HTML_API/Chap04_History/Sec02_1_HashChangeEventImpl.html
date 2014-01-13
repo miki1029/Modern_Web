@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>해시 변경 이벤트</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code25
+			// 익스 구버전에서 hashchange 이벤트를 수행할 수 없음
+			// hashChange() : hashchange 이벤트의 역할을 대신함.
+			function hashChange() {
+				alert(location.hash);
+			}
+			
+			// 1초에 10번 해시가 변경되었는지 검사
+			var beforeURL = location.hash;
+			// setInterval(function(){}, time);
+			setInterval(function() {
+				// 변경 되었으면 hashChange() 실행
+				if(beforeURL != location.hash) {
+					hashChange();
+				}
+				
+				// 현재의 hash 저장
+				beforeURL = location.hash;
+			}, 1000/10);
+		</script>
+	</head>
+	<body>
+		<a href="#point_a">Move to Point_A</a>
+		<a href="#point_b">Move to Point_B</a>
+	</body>
+</html>

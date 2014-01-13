@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>함수의 메소드</title>
+		<meta charset='utf-8' />
+	</head>
+	<body>
+		<h1 id="header">Start Timer : </h1>
+		<script>
+			var header = document.getElementById('header');
+			
+			/*
+			// Code08
+			// 아래 코드의 this는 header이길 기대했지만 window 객체를 의미함.
+			// 즉 h1 태그를 클릭해도 변화가 없음.
+			header.onclick = function () {
+				// alert(this);					// this:[object HTMLHeadingElement]
+				setInterval(function () {
+					// alert(this);				// this:[object Window]
+					this.innerHTML += '★';
+				}, 1000);
+			};
+			*/
+			
+			// Code11 bind(), apply()
+			// bind를 이용하여 함수 내부에서 this 키워드가 의미하는 객체를 강제로 지정
+			// apply()도 있음
+			header.onclick = function () {
+				// alert(this);					// this:[object HTMLHeadingElement]
+				setInterval(function () {
+					// alert(this);				// this:[object HTMLHeadingElement]
+					this.innerHTML += '★';
+				}.bind(this), 1000);
+			};
+			
+			// Code12 또 다른 방법
+			/*
+			header.onclick = function () {
+				var self = this;
+				setInterval(function () {
+					self.innerHTML += '★';
+				}, 1000);
+			};*/
+		</script>
+	</body>
+</html>
