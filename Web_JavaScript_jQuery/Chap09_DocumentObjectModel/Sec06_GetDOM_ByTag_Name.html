@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>문서 객체 가져오기 (2)</title>
+		<meta charset='utf-8' />
+		<script>
+			window.onload = function() {
+				// Code17 document.getElementsByTagName()
+				(function(){
+					// headers는 h1 객체의 배열이 저장된다.
+					var headers = document.getElementsByTagName('h1');
+					
+					// 배열이므로 반복문을 사용할 수는 있지만 for in 반복문은 불가능!
+					for(var i=0; i<headers.length; i++) {
+						headers[i].innerHTML = 'With getElementsByTagName()';
+					}
+					
+					// for in 반복문이 안되는 이유: 문서 객체 이외의 다른 속성에도 접근함
+					for(var e in headers) {
+						document.body.innerHTML += e + ' ';
+					}
+					// 0, 1, length, item(브라우저에 따라 차이가 있음)
+				})();
+				
+				// document.getElementsByName()
+				(function(){
+					var headers = document.getElementsByName('header');
+					
+					for(var i=0; i<headers.length; i++) {
+						headers[i].innerHTML = 'With getElementsByName()';
+					}
+				})();
+			};
+		</script>
+	</head>
+	<body>
+		<h1>Header</h1>
+		<h1>Header</h1>
+		<h2 name="header">Header</h2>
+		<h2 name="header">Header</h2>
+	</body>
+</html>

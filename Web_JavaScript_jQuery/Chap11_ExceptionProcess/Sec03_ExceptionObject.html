@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>예외 객체</title>
+		<meta charset='utf-8' />
+		<script>
+			// 브라우저마다 차이가 심한 부분. 잘 사용 안함
+			try {
+				var array = new Array(99999999999999999999);
+			} catch(exception) {
+				var output = '';
+				for(var i in exception) {
+					output += i + ': ' + exception[i] + '<br />';
+				}
+				document.write(output);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

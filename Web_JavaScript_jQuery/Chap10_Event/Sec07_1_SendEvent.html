@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>이벤트 전달</title>
+		<meta charset='utf-8' />
+		<style>
+			* { border: 3px solid black; }
+		</style>
+		<script>
+
+		</script>
+	</head>
+	<body>
+		<div onclick="alert('outer_div')">
+			<div onclick="alert('inner_div')">
+				<h1 onclick="alert('header')">
+					<p onclick="alert('paragraph')">Paragraph</p>
+				</h1>
+			</div>
+		</div>
+	</body>
+</html>

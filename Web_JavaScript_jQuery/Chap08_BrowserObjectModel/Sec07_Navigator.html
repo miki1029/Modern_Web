@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>navigator 객체</title>
+		<meta charset='utf-8' />
+		<script>
+			var output = '';
+			for(var key in navigator) {
+				output += '●' + key + ': ' + navigator[key] + '<br />';
+			}
+			document.write(output);
+			/*	●appCodeName: Mozilla
+				●appName: Netscape
+				●appVersion: 5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36
+				●platform: Linux x86_64
+				●userAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36
+				
+				●geolocation: [object Geolocation]
+				●webkitPersistentStorage: [object StorageQuota]
+				●webkitTemporaryStorage: [object StorageQuota]
+				●doNotTrack: null
+				●onLine: true
+				●product: Gecko
+				●vendorSub: 
+				●vendor: Google Inc.
+				●productSub: 20030107
+				●cookieEnabled: true
+				●mimeTypes: [object MimeTypeArray]
+				●plugins: [object PluginArray]
+				●language: ko
+				●javaEnabled: function javaEnabled() { [native code] }
+				●getStorageUpdates: function getStorageUpdates() { [native code] }
+				●registerProtocolHandler: function registerProtocolHandler() { [native code] }
+				●webkitGetGamepads: function webkitGetGamepads() { [native code] }
+				●webkitGetUserMedia: function webkitGetUserMedia() { [native code] }
+			*/
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

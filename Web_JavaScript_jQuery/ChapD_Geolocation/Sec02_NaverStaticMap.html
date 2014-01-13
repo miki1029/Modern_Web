@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>지오로케이션 객체</title>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+			$(document).ready(function() {
+				function getLocation(position) {
+					var url = '';
+
+					url += 'http://openapi.naver.com/map/getStaticMap?';
+					url += 'version=1.0&';
+					url += 'crs=EPSG:4326&';
+					url += 'center=' + position.coords.longitude + ',' + position.coords.latitude + '&';
+					url += 'markers=' + position.coords.longitude + ',' + position.coords.latitude + '&';
+					url += 'level=12&';
+					url += 'w=700&';
+					url += 'h=420&';
+					url += 'maptype=default&';
+					url += 'key=35c3fbc44b3a85e57c132ba700d57b43&';
+					url += 'uri=localhost/Modern_Web';
+
+					$('<img />').attr('src', url).appendTo('body');
+				}
+
+				if(navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(getLocation, function(error) {
+						// 위치를 가져오는데 실패할 경우
+						alert(error.message);
+					});
+				} else {
+					alert('Geolocation을 지원하지 않는 브라우저입니다.');
+				}
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

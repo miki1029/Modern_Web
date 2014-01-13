@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 변수를 선언합니다.
+            var object = { name: 'RintIanTta' };
+
+            // $.extend() 메서드를 사용합니다.
+            $.extend(object, {
+                gender: 'Male',
+                part: 'Second Guitar',
+                myMethod: function() { alert('a'); }
+            });
+
+            // 출력합니다.
+            var output = '';
+            $.each(object, function (key, item) {
+                output += key + ': ' + item + '\n';
+            });	// myMethod도 출력됨
+            alert(output);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

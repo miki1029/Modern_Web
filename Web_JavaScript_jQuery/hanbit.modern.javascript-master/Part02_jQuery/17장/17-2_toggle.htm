@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('h1').eq(0).click(function () {
+                $(this).next().toggle('slow', function () {
+                    //alert('toggle EFFECT END..!');
+                });
+            });
+            $('h1').eq(1).click(function () {
+                $(this).next().slideToggle('slow', function () {
+                    //alert('slideToggle EFFECT END..!');
+                });
+            });
+            $('h1').eq(2).click(function () {
+                $(this).next().fadeToggle('slow', function () {
+                    //alert('fadeToggle EFFECT END..!');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>OPEN & CLOSE</h1>
+    <div>
+        <h2>Lorem ipsum</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <h1>OPEN & CLOSE</h1>
+    <div>
+        <h2>Lorem ipsum</h2>
+        <p>Aenean vel augue dolor, at rhoncus tortor.</p>
+    </div>
+    <h1>OPEN & CLOSE</h1>
+    <div>
+        <h2>Lorem ipsum</h2>
+        <p>Aenean vel augue dolor, at rhoncus tortor.</p>
+    </div>
+    <h1>OPEN & CLOSE</h1>
+    <div>
+        <h2>Lorem ipsum</h2>
+        <p>Aenean vel augue dolor, at rhoncus tortor.</p>
+    </div>
+</body>
+</html>

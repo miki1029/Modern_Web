@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>window 객체</title>
+		<meta charset='utf-8' />
+		<script>
+			for(var key in window) {
+				document.write('●' + key + ': ' + window[key] + '<br />');
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+<!--
+●alert: function alert() { [native code] }
+●confirm: function confirm() { [native code] }
+●prompt: function prompt() { [native code] }
+
+●open: function open() { [native code] }
+
+●setTimeout: function setTimeout() { [native code] }
+●clearTimeout: function clearTimeout() { [native code] }
+●setInterval: function setInterval() { [native code] }
+●clearInterval: function clearInterval() { [native code] }
+
+●moveBy: function moveBy() { [native code] }
+●moveTo: function moveTo() { [native code] }
+●resizeBy: function resizeBy() { [native code] }
+●resizeTo: function resizeTo() { [native code] }
+●scrollBy: function scrollBy() { [native code] }
+●scrollTo: function scrollTo() { [native code] }
+●focus: function () { [native code] }
+●blur: function () { [native code] }
+●close: function () { [native code] }
+
+●location: http://127.0.0.1:8020/Modern_Web/Web_JavaScript_jQuery/Chap08_BrowserObjectModel/Sec01_Window.html
+●navigator: [object Navigator]
+●history: [object History]
+●screen: [object Screen]
+●document: [object HTMLDocument]
+
+●onload: null
+●ondeviceorientation: null
+●ondevicemotion: null
+●ontransitionend: null
+●onwebkittransitionend: null
+●onwebkitanimationstart: null
+●onwebkitanimationiteration: null
+●onwebkitanimationend: null
+●onsearch: null
+●onreset: null
+●onwaiting: null
+●onvolumechange: null
+●onunload: null
+●ontimeupdate: null
+●onsuspend: null
+●onsubmit: null
+●onstorage: null
+●onstalled: null
+●onselect: null
+●onseeking: null
+●onseeked: null
+●onscroll: null
+●onresize: null
+●onratechange: null
+●onprogress: null
+●onpopstate: null
+●onplaying: null
+●onplay: null
+●onpause: null
+●onpageshow: null
+●onpagehide: null
+●ononline: null
+●onoffline: null
+●onwheel: null
+●onmousewheel: null
+●onmouseup: null
+●onmouseover: null
+●onmouseout: null
+●onmousemove: null
+●onmouseleave: null
+●onmouseenter: null
+●onmousedown: null
+●onmessage: null
+●onloadstart: null
+●onloadedmetadata: null
+●onloadeddata: null
+●onkeyup: null
+●onkeypress: null
+●onkeydown: null
+●oninvalid: null
+●oninput: null
+●onhashchange: null
+●onfocus: null
+●onerror: null
+●onended: null
+●onemptied: null
+●ondurationchange: null
+●ondrop: null
+●ondragstart: null
+●ondragover: null
+●ondragleave: null
+●ondragenter: null
+●ondragend: null
+●ondrag: null
+●ondblclick: null
+●oncontextmenu: null
+●onclick: null
+●onchange: null
+●oncanplaythrough: null
+●oncanplay: null
+●onblur: null
+●onbeforeunload: null
+●onabort: null
+
+●scroll: function scroll() { [native code] }
+●top: [object Window]
+●window: [object Window]
+●external: [object Object]
+●chrome: [object Object]
+●webkitNotifications: [object NotificationCenter]
+●localStorage: [object Storage]
+●sessionStorage: [object Storage]
+●applicationCache: [object ApplicationCache]
+●webkitStorageInfo: [object StorageInfo]
+●indexedDB: [object IDBFactory]
+●webkitIndexedDB: [object IDBFactory]
+●crypto: [object Crypto]
+●CSS: [object CSS]
+●performance: [object Performance]
+●console: [object Console]
+●devicePixelRatio: 1
+●styleMedia: [object StyleMedia]
+●parent: [object Window]
+●opener: null
+●frames: [object Window]
+●self: [object Window]
+●defaultstatus: 
+●defaultStatus: 
+●status: 
+●name: 
+●length: 0
+●closed: false
+●pageYOffset: 0
+●pageXOffset: 0
+●scrollY: 0
+●scrollX: 0
+●screenTop: 24
+●screenLeft: 65
+●screenY: 24
+●screenX: 65
+●innerWidth: 1855
+●innerHeight: 1088
+●outerWidth: 1855
+●outerHeight: 1176
+●offscreenBuffering: true
+●frameElement: null
+●clientInformation: [object Navigator]
+●toolbar: [object BarProp]
+●statusbar: [object BarProp]
+●scrollbars: [object BarProp]
+●personalbar: [object BarProp]
+●menubar: [object BarProp]
+●locationbar: [object BarProp]
+●postMessage: function () { [native code] }
+●getSelection: function getSelection() { [native code] }
+●print: function print() { [native code] }
+●stop: function stop() { [native code] }
+●showModalDialog: function showModalDialog() { [native code] }
+●find: function find() { [native code] }
+●matchMedia: function matchMedia() { [native code] }
+●requestAnimationFrame: function requestAnimationFrame() { [native code] }
+●cancelAnimationFrame: function cancelAnimationFrame() { [native code] }
+●webkitRequestAnimationFrame: function webkitRequestAnimationFrame() { [native code] }
+●webkitCancelAnimationFrame: function webkitCancelAnimationFrame() { [native code] }
+●webkitCancelRequestAnimationFrame: function webkitCancelRequestAnimationFrame() { [native code] }
+●captureEvents: function captureEvents() { [native code] }
+●releaseEvents: function releaseEvents() { [native code] }
+●atob: function atob() { [native code] }
+●btoa: function btoa() { [native code] }
+●TEMPORARY: 0
+●PERSISTENT: 1
+●getComputedStyle: function getComputedStyle() { [native code] }
+●getMatchedCSSRules: function getMatchedCSSRules() { [native code] }
+●webkitConvertPointFromPageToNode: function webkitConvertPointFromPageToNode() { [native code] }
+●webkitConvertPointFromNodeToPage: function webkitConvertPointFromNodeToPage() { [native code] }
+●webkitRequestFileSystem: function webkitRequestFileSystem() { [native code] }
+●webkitResolveLocalFileSystemURL: function webkitResolveLocalFileSystemURL() { [native code] }
+●openDatabase: function openDatabase() { [native code] }
+●addEventListener: function addEventListener() { [native code] }
+●removeEventListener: function removeEventListener() { [native code] }
+●dispatchEvent: function dispatchEvent() { [native code] }
+-->

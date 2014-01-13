@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ECMAScript5 Array 객체(2) reduce 메소드</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code50 reduce(function(이전값, 현재값, 인덱스, 배열) { });
+			(function() {
+				var array = [1,2,3,4,5];
+				
+				var output = '';
+				array.reduce(function(previousValue, currentValue, index, array) {
+					output += previousValue + ' : ' + currentValue + ' : ' + index + '<br />';
+				});
+				
+				document.write(output);
+				document.write('<br />');
+			})();
+			
+			(function() {
+				var array = [1,2,3,4,5];
+				
+				var output = '';
+				array.reduceRight(function(previousValue, currentValue, index, array) {
+					output += previousValue + ' : ' + currentValue + ' : ' + index + '<br />';
+				});
+				
+				document.write(output);
+				document.write('<br />');
+			})();
+			
+			// Code51 reduce() 활용
+			(function() {
+				var array = [1,2,3,4,5];
+				
+				var result = array.reduce(function(previousValue, currentValue, index, array) {
+					return previousValue + currentValue;
+				});
+
+				document.write(result + '<br />');
+				document.write('<br />');
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

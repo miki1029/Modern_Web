@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>문서 객체 만들기 (1)</title>
+		<meta charset='utf-8' />
+		<script>
+			window.onload = function() {
+				// Code06 요소 노드, 텍스트 노드, 노드간 연결
+				// document.createElement(태그) : 요소(태그) 노드를 생성
+				// document.createTextNode(텍스트) : 텍스트 노드를 생성
+				// 객체.appendChild(노드) : 객체에 노드를 연결
+				// 객체.removeChild(노드) : 객체의 노드를 제거(Sec08)
+				(function(){
+					var header = document.createElement('h1');
+					var textNode = document.createTextNode('Hello DOM');
+					
+					header.appendChild(textNode);
+					document.body.appendChild(header);
+				})();
+			};
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

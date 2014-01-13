@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>window 객체의 onload 이벤트 속성</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code15 window.onload
+			window.onload = function(){
+				// alert가 없으면 h1태그가 보이지 않은 채 알림창이 뜨지만
+				// onload 이벤트에 연결시켰기 때문에 태그가 전부 로드된 후에 경고창이 뜸.
+				alert('Hello World..!');
+			};
+		</script>
+	</head>
+	<body>
+		<h1>Hello Window..!</h1>
+		<h1>Hello Window..!</h1>
+	</body>
+</html>

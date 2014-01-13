@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>location 객체</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code10 location 객체의 속성
+			var output = '';
+			for(var key in location) {
+				output += '●' + key + ': ' + location[key] + '<br />';
+			}
+			document.write(output);
+			document.write('<br />');
+			/*	●replace: function () { [native code] }
+				●assign: function () { [native code] }
+				●reload: function reload() { [native code] }
+				●ancestorOrigins: [object DOMStringList]
+				
+				●href: 	http://127.0.0.1:8020/Modern_Web/Web_JavaScript_jQuery/Chap08_BrowserObjectModel/Sec05_Screen.html?id=1;pwd=2#top
+				●origin: 	http://127.0.0.1:8020
+				●protocol:	http:
+				●host: 	127.0.0.1:8020
+				●hostname:	127.0.0.1
+				●port:		8020
+				●pathname:	/Modern_Web/Web_JavaScript_jQuery/Chap08_BrowserObjectModel/Sec05_Screen.html
+				●search:	?id=1;pwd=2
+				●hash:		#top
+			 */
+			
+			setTimeout(function(){
+				// 페이지를 이동하는 4가지 방법
+				// location.replace()는 뒤로 가기 버튼을 사용할 수 없다.
+				//location = 'http://naver.com';
+				//location.href = 'http://naver.com';
+				//location.assign('http://naver.com');
+				//location.replace('http://naver.com');
+				
+				// 페이지 새로고침 5가지 방법
+				//location = location;
+				//location.href = location.href;
+				//location.assign(location);
+				//location.replace(location);
+				//location.reload();
+			},1000);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

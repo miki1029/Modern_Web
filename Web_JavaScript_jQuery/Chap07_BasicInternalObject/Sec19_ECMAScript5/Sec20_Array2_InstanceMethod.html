@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ECMAScript5 Array 객체(1) 인스턴스 메소드</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code45 indexOf(찾을값), lastIndexOf(찾을값)
+			(function() {
+				var array = [1,2,3,4,5,6,7,8,9,4];
+				
+				var output1 = array.indexOf(4);			// 4의 위치 3 리턴
+				var output2 = array.indexOf(8);			// 8의 위치 7 리턴
+				var output3 = array.lastIndexOf(4);	// 마지막 4이 위치 9 리턴
+				var output4 = array.lastIndexOf(11);	// 11은 없으므로 -1 리턴
+				
+				var output ='';
+				output += output1 + ' : ' + output2 + '<br />';
+				output += output3 + ' : ' + output4 + '<br />';
+				
+				document.write(output);
+				document.write('<br />');
+			})();
+
+			// Code46 forEach(function(요소, 인덱스, 배열) { });
+			// filter(), every(), some() 모두 forEach()와 인자가 같음
+			(function() {
+				var array = [1,2,3,4,5,6,7,8,9,10];
+				
+				var sum=0;
+				var output='';
+				
+				array.forEach(function(element, index, array) {
+					sum += element;
+					output += index + ': ' + element + ' -> ' + sum + '<br />';
+				});
+				
+				document.write(output);
+				document.write('<br />');
+			})();
+
+			// Code47 filter(function(요소, 인덱스, 배열) { });
+			(function() {
+				var array = [1,2,3,4,5,6,7,8,9,10];
+				
+				// 파라미터의 이름은 임의로 정해도 되며, 필요 없는 것은 생략 가능
+				array = array.filter(function(item) {
+					// boolean 형으로 리턴
+					return item <= 5;
+				});
+				
+				document.write(array);
+				document.write('<br />');
+				document.write('<br />');
+			})();
+			
+			// Code48 every(function(요소, 인덱스, 배열) { });, some(function(요소, 인덱스, 배열) { });
+			(function(){
+				var array = [1,2,3,4,5,6,7,8,9,10];
+				
+				function lessThanFive(element, index, array) {
+					return element < 5;
+				}
+				
+				function lessThanTwenty(element, index, array) {
+					return element < 20;
+				}
+				
+				var output1 = array.every(lessThanFive);
+				var output2 = array.every(lessThanTwenty);
+				var output3 = array.some(lessThanFive);
+				var output4 = array.some(lessThanTwenty);
+				
+				var output ='';
+				output += output1 + ' : ' + output2 + '<br />';
+				output += output3 + ' : ' + output4 + '<br />';
+				
+				document.write(output);
+				document.write('<br />');
+			})();
+			
+			// Code49 map(function(요소) { });
+			(function(){
+				var array = [1,2,3,4,5,6,7,8,9,10];
+				
+				var array = array.map(function(element) {
+					return element * element;
+				});
+				
+				document.write(array);
+				document.write('<br />');
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

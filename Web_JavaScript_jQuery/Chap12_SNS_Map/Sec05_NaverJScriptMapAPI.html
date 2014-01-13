@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>네이버 지도 API - JavaScript Map</title>
+		<meta charset='utf-8' />
+		<script src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=35c3fbc44b3a85e57c132ba700d57b43"></script>
+		<script>
+			window.onload = function() {
+				// 지도를 생성
+				var map = new nhn.api.map.Map('map');
+
+				// 줌 컨트롤 생성
+				var mapZoom = new nhn.api.map.ZoomControl();
+				mapZoom.setPosition({ left: 20, top: 20 });
+
+				// 지도 타입 버튼을 생성
+				var mapType = new nhn.api.map.MapTypeBtn();
+				mapType.setPosition({ left:50, top:20 });
+
+				// 실시간 교통 지도 버튼을 생성
+				var mapTraffic = new nhn.api.map.TrafficMapBtn();
+				mapTraffic.setPosition({ left: 125, top: 20 });
+
+				// 테마 지도 버튼을 생성
+				var mapTheme = new nhn.api.map.ThemeMapBtn();
+				mapTheme.setPosition({ left: 200, topL: 20 });
+
+				// 자전거 범례를 생성
+				var mapBicycleGuide = new nhn.api.map.BicycleGuide();
+
+				// 교통 범례를 생성
+				var mapTrafficGuide = new nhn.api.map.TrafficGuide();
+
+				// 지도에 컨트롤을 추가
+				map.addControl(mapZoom);
+				map.addControl(mapType);
+				map.addControl(mapTraffic);
+				map.addControl(mapTheme);
+				map.addControl(mapBicycleGuide);
+				map.addControl(mapTrafficGuide);
+			};
+		</script>
+	</head>
+	<body>
+		<div id="map" style="width:700px; height:450px;">
+
+		</div>
+	</body>
+</html>

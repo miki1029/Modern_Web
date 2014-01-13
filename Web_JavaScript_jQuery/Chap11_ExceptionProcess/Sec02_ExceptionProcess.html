@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>고급 예외 처리</title>
+		<meta charset='utf-8' />
+		<script>
+			function registerEventListener(node, event, listener) {
+				try {
+					node.addEventListener(event, listener, false);
+				} catch(exception) {
+					node.attachEvent('on' + event, listener);
+				} finally {
+					alert('이벤트 등록 완료');
+				}
+			}
+
+			window.onload = function() {
+				var header = document.getElementById('header');
+				registerEventListener(header, 'click', function() {
+					alert('click');
+				});
+			};
+		</script>
+	</head>
+	<body>
+		<h1 id="header">Click</h1>
+	</body>
+</html>

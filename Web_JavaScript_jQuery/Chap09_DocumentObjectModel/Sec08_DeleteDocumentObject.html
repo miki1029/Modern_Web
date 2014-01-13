@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>문서 객체 제거</title>
+		<meta charset='utf-8' />
+		<script>
+			window.onload = function(){
+				var willRemove = document.getElementById('will_remove');
+				
+				// 객체.removeChild(노드) : 객체의 노드를 제거
+				//document.body.removeChild(willRemove);
+				
+				// 더 일반적으로 많이 쓰는 표현 방식
+				// childNode, parentNode
+				willRemove.parentNode.removeChild(willRemove);
+			};
+		</script>
+	</head>
+	<body>
+		<h1 id="will_remove">Header</h1>
+	</body>
+</html>

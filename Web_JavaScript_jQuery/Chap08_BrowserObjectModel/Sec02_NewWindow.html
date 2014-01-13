@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>새 window 객체 생성</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code03 open(URL, 이름, 모양, 히스토리 옵션)
+			/* 모양
+			 * 픽셀값
+			 *   width: 너비, height: 높이
+			 * yes(또는 1), no(또는 0)
+			 *   location: 주소 입력창
+			 *   menubar: 메뉴바
+			 *   resizable: 크기 조정 여부
+			 *   status: 상태 표시줄
+			 *   toolbar: 상태 표시줄
+			 */
+			/* 히스토리 옵션
+			 * true: 현재의 history 사용
+			 * false: 새로운 history로 시작
+			 */
+			
+			(function(){
+				window.open('http://hanb.co.kr', 'child', 'width=600, height=300', true);
+			})();
+			
+			// Code04 open() 메소드의 리턴값
+			(function(){
+				var child = window.open('', '', 'width=300, height=200');
+				
+				if(child) {
+					child.document.write('<h1>From Parent Window</h1>');
+				} else {
+					alert('팝업 차단을 해제해주세요.');
+				}
+				
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

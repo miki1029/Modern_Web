@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>window 객체의 타이머 메소드</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code05
+			// setTimeout(함수, 시간) : 일정 시간 후에 함수 한 번 실행
+			// clearTimeout(아이디) : setTimeout을 중지
+			/*
+			window.onload = function() {
+				alert('3초 후 이 페이지는 종료됩니다.');
+				window.setTimeout(function() {
+					window.close();
+				}, 3000);
+			};*/
+			
+			// Code06
+			// setInterval(함수, 시간) : 일정 시간마다 함수 반복 실행
+			// clearInterval(아이디) : setInterval을 중지
+			window.onload = function() {
+				var intervalID = setInterval(function() {
+					document.body.innerHTML += '<p>' + new Date + '</p>';
+				}, 1000);
+				
+				setTimeout(function() {
+					clearInterval(intervalID);
+				}, 10000);
+			};
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

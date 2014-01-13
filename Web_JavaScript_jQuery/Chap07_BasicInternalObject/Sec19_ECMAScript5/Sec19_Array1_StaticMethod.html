@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ECMAScript5 Array 생성자 함수의 메소드</title>
+		<meta charset='utf-8' />
+		<script>
+			document.write(([1,2,3].constructor == Array) + "<br />");
+			document.write(Array.isArray([1,2,3]) + "<br />");
+			document.write(Array.isArray({}) + "<br />");
+			document.write(Array.isArray(1) + "<br />");
+		</script>
+	</head>
+	<body>
+		<p>Array.isArray() : 배열인지 확인합니다.</p>
+		<p>typeof 키워드를 사용해서 Array 객체의 자료형을 확인하면 문자열 'object'가 나오므로<br />
+		Array 객체임을 확인하려면 constructor() 메소드(7.4절)를 사용해 자료형을 비교하는 것을 응용해야 합니다.<br />
+		만약 ECMAScript5를 사용할 수 있는 환경이라면 isArray() 메소드를 사용할 수도 있습니다.</p>
+	</body>
+</html>

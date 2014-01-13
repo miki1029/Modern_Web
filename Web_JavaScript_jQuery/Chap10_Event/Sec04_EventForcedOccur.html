@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>이벤트 강제 발생</title>
+		<meta charset='utf-8' />
+		<script>
+			window.onload = function() {
+				var buttonA = document.getElementById('button_a');
+				var buttonB = document.getElementById('button_b');
+				var counterA = document.getElementById('counter_a');
+				var counterB = document.getElementById('counter_b');
+
+				buttonA.onclick = function(){
+					counterA.innerHTML = Number(counterA.innerHTML) + 1;
+				};
+				buttonB.onclick = function(){
+					counterB.innerHTML = Number(counterB.innerHTML) + 1;
+
+					// A버튼도 같이 클릭되는 효과(강제 발생)
+					buttonA.onclick();
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<button id="button_a">ButtonA</button>
+		<button id="button_b">ButtonB</button>
+		<h1>Button A - <span id="counter_a">0</span></h1>
+		<h1>Button B - <span id="counter_b">0</span></h1>
+	</body>
+</html>

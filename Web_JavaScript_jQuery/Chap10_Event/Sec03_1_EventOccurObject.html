@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>이벤트 발생 객체와 이벤트 객체</title>
+		<meta charset='utf-8' />
+		<script>
+			// 누가, 언제, 어디서, 무엇을, 어떻게, 왜
+			
+			// Code06
+			// 누가
+			window.onload = function(){
+				document.getElementById('header').onclick = function(){
+					// this: 누가. 이벤트를 발생시킨 객체(header)
+					//document.body.innerHTML += '<p>' + this + '</p>';
+					// 이거 하면 밑에 style 안되네..... HTML조작해서 안되는듯
+					this.style.color = 'orange';
+					this.style.backgroundColor = 'red';
+					document.body.innerHTML += '<p>' + this + '</p>';
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<h1 id="header">Click</h1>
+	</body>
+</html>

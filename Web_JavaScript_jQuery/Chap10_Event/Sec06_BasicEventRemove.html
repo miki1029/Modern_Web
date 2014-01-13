@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>기본 이벤트 제거</title>
+		<meta charset='utf-8' />
+		<script>
+			function whenSubmit() {
+				return false;
+			}
+
+			window.onload = function() {
+				// submit의 기본 이벤트 onsubmit을 수정(제거)
+				document.getElementById('my_form').onsubmit = function(){
+					var pass = document.getElementById('pass').value;
+					var pass_check = document.getElementById('pass_check').value;
+
+					// 유효성 검사
+					if(pass == pass_check) {
+						alert('성공');
+					} else {
+						alert('다시 입력해 주세요.');
+						return false; // 실패시 기본 이벤트 제거
+					}
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<!-- 고전 이벤트 모델 -->
+		<form id="my_form">
+			<label for="name">이름</label><br />
+			<input type="text" name="name" id="name" /><br />
+
+			<label for="pass">비밀번호</label><br />
+			<input type="password" name="pass" id="pass" /><br />
+
+			<label for="pass_check">비밀번호 확인</label><br />
+			<input type="password" id="pass_check" /><br />
+
+			<input type="submit" value="제출" />
+		</form>
+		<hr />
+
+		<!-- 인라인 이벤트 모델 -->
+		<!-- return을 입력해 주어야 함 -->
+		<form onsubmit="return whenSubmit()">
+			<input type="submit" />
+		</form>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>이벤트 모델의 통합적 사용</title>
+		<meta charset='utf-8' />
+		<script>
+			window.onload = function() {
+				var header = document.getElementById('myHeader');
+
+				// IE ...
+				if(header.attachEvent) {
+					var handler = function() {
+						alert('ie');
+						// window.event.srcElement: 이벤트를 발생시킨 객체(표준에서는 this)
+						window.event.srcElement.style.color = 'red';
+						// 한번 이벤트 발생한 후 이벤트 제거
+						window.event.srcElement.detachEvent('onclick', handler);
+						alert('ok');
+					};
+					header.attachEvent('onclick', handler);
+				}
+				// Etc ...
+				else {
+					var handler = function() {
+						alert('etc');
+						this.style.color = 'red';
+						this.removeEventListener('click', handler);
+					};
+					header.addEventListener('click', handler);
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<h1 id="myHeader">Click</h1>
+	</body>
+</html>

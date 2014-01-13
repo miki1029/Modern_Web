@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>인터넷 익스플로러 이벤트 모델</title>
+		<meta charset='utf-8' />
+		<script>
+			// 익스에서만 실행하도록 지정
+			if(window.attachEvent) {
+				window.attachEvent('onload', function() {
+					var header = document.getElementById('myHeader1');
+					var handler = function() { alert('핸들러 클릭'); };
+
+					header.attachEvent('onclick', function() { alert('클릭'); });
+					header.attachEvent('onclick', function() { alert('클릭'); });
+					header.attachEvent('onclick', handler);
+					header.detachEvent('onclick', handler);
+				});
+			};
+		</script>
+	</head>
+	<body>
+		<h1 id="myHeader1">Click</h1>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>문서 객체 만들기 (2)</title>
+		<meta charset='utf-8' />
+		<script>
+			window.onload = function() {
+				// Code08
+				// 텍스트 노드를 갖지 않는 노드의 생성
+				// 노드 객체의 속성 지정(지원되는 태그만 가능)
+				(function(){
+					var img = document.createElement('img');
+					img.src = 'Penguins.jpg';
+					img.width = 500;
+					img.height = 350;
+					
+					document.body.appendChild(img);
+				})();
+				
+				// Code09 메소드를 이용한 노드 객체의 속성 지정
+				// 객체.setAttribute(속성이름, 속성값) : 객체의 속성 지정
+				// 객체.getAttribute(속성이름) : 객체의 속성을 가져옴
+				(function(){
+					var img = document.createElement('img');
+					img.setAttribute('src', 'Penguins.jpg');
+					img.setAttribute('width', 500);
+					img.setAttribute('height', 350);
+					// setAttribute()를 이용하지 않으면 불가능한 속성(임의로 정한 속성)
+					img.setAttribute('data-property', 350);
+					
+					document.body.appendChild(img);
+					
+					// getAttribute()
+					var pTag = document.createElement('p');
+					var textNode = document.createTextNode(img.getAttribute('src'));
+					
+					pTag.appendChild(textNode);
+					document.body.appendChild(pTag);
+				})();
+			};
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

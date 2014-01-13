@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 변수를 선언합니다.
+            var array = [
+                { name: 'Hanbit Media', link: 'http://hanb.co.kr' },
+                { name: 'Naver', link: 'http://naver.com' },
+                { name: 'Daum', link: 'http://daum.net' },
+                { name: 'Paran', link: 'http://paran.com' }
+            ];
+
+              // 자바스크립트의 예시(배열만)
+            array.forEach(function (item, index) {
+                // 변수를 선언합니다.
+                var output = '';
+                // 문자열을 만듭니다.
+                output += '<a href="' + item.link + '">';
+                output += ' <h1>' + item.name + '</h1>';
+                output += '</a>';
+                // 집어넣습니다.
+                document.body.innerHTML += output;
+              });
+
+            // $.each() 메소드(배열)
+            $.each(array, function (index, item) {
+                // 변수를 선언합니다.
+                var output = '';
+                // 문자열을 만듭니다.
+                output += '<a href="' + item.link + '">';
+                output += ' <h1>' + item.name + '</h1>';
+                output += '</a>';
+                // 집어넣습니다.
+                document.body.innerHTML += output;
+            });
+
+            // $.each() 메소드(객체)
+          	$.each(array[0], function(key, item) {
+          		var output='';
+          		output += key + ':' + item + '<br />';
+          		document.body.innerHTML += output;
+          	});
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>이벤트 전달 막기</title>
+		<meta charset='utf-8' />
+		<script>
+			window.onload = function(){
+				document.getElementById('header').onclick = function() {
+					alert('header');
+				};
+				document.getElementById('paragraph').onclick = function(e) {
+					var event = e || window.event;
+
+					alert('paragraph');
+
+					// 이벤트 전달 막기
+					// ie..
+					event.cancelBubble = true;
+					// etc..
+					if(event.stopPropagation) {
+						event.stopPropagation();
+					}
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<h1 id="header">
+			<p id="paragraph">Paragraph</p>
+		</h1>
+	</body>
+</html>

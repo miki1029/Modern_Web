@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ECMAScript5 JSON 객체와 Date 객체</title>
+		<meta charset='utf-8' />
+		<script>
+			// Code52
+			// JSON.stringify(객체) : 객체를 JSON 문자열로 변환
+			// JSON.parse(JSON문자열) : JSON 문자열을 객체로 변환
+			(function() {
+				var object = {
+					name: 'Miki',
+					gender: 'Male'
+				};
+				
+				document.write(JSON.stringify(object));
+				document.write('<br />');
+				
+				var copy = JSON.parse(JSON.stringify(object));
+				
+				document.write(copy.name + ' : ' + copy.gender);
+				document.write('<br />');
+			})();
+			
+			// Code54
+			// date.toJSON() : JSON 문자열로 변경 
+			(function() {
+				var date = new Date();
+				
+				document.write(JSON.stringify(date.toJSON()));
+				document.write('<br />');
+				document.write(date.toJSON());
+				document.write('<br />');
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

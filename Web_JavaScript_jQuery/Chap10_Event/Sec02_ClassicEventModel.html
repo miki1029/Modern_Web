@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>고전 이벤트 모델</title>
+		<meta charset='utf-8' />
+		<script>
+			window.onload = function() {
+				var header = document.getElementById('header');
+				
+				header.onclick = function() {
+					alert('클릭');
+					
+					// 한번 실행 후 이벤트 제거
+					header.onclick = null;
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<h1 id="header">Click</h1>
+	</body>
+</html>

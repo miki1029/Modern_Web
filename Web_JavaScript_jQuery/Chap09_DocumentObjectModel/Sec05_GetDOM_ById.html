@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>문서 객체 가져오기 (1)</title>
+		<meta charset='utf-8' />
+		<script>
+			window.onload = function() {
+				var header1 = document.getElementById('header_1');
+				var header2 = document.getElementById('header_2');
+				
+				header1.innerHTML = 'with getElementById()';
+				header2.innerHTML = 'wow!';
+			};
+		</script>
+	</head>
+	<body>
+		<h1 id="header_1">Header</h1>
+		<h1 id="header_2">Header</h1>
+	</body>
+</html>

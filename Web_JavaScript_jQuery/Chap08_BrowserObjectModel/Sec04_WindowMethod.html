@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>window 객체의 기본 메소드</title>
+		<meta charset='utf-8' />
+		<script>
+			var child = window.open('','','width=1000, height=1000');
+			
+			// resizeTo(x, y) : 윈도우의 크기를 절대적으로 지정
+			child.resizeTo(300, 200);
+			
+			setTimeout(function() {
+				// resizeBy(x, y) : 윈도우의 크기를 상대적 위치로 지정
+				child.resizeBy(200, -100);
+			}, 1000 * 2.5);
+			
+			
+			// moveTo(x, y) : 윈도우의 위치를 절대적 위치로 이동
+			child.moveTo(0,0);
+			
+			var childMoveId = setInterval(function() {
+				// moveBy(x, y) : 윈도우의 위치를 상대적 위치로 이동
+				child.moveBy(30, 30);
+			}, 1000);
+			
+			
+			setTimeout(function() {
+				clearInterval(childMoveId);
+				child.close();
+			}, 1000 * 4.5);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

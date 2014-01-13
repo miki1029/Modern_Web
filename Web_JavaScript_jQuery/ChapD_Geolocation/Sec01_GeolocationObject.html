@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>지오로케이션 객체</title>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+			$(document).ready(function() {
+				if(navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function(position) {
+						// 위치를 가져오는데 성공할 경우
+						
+						// position 객체의 coords 속성을 모두 출력
+						$.each(position.coords, function(key, item) {
+							$('<h1></h1>').html('●' + key + ': ' + item).appendTo('body');
+						});
+						alert('성공');
+					}, function(error) {
+						// 위치를 가져오는데 실패할 경우
+						alert(error.message);
+					});
+				} else {
+					alert('Geolocation을 지원하지 않는 브라우저입니다.');
+				}
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
