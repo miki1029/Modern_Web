@@ -19,12 +19,14 @@
                 $('#dialog').dialog('open');
             });
 
+			// ※bind() 이벤트 연결 메소드를 이용한 방식(옵션 객체 속성 이름 앞에 dialog를 붙임)
             $('#dialog').bind('dialogcreate', function () {
                 alert('다이얼로그를 생성했습니다.');
             });
 
             // jQuery UI Dialog 플러그인
             $('#dialog').dialog({
+            	// ※옵션 객체 속성을 이용한 방식(create, beforeClose, open, focus, close 등)
                 open: function () {
                     alert('DIALOG OPEN');
                 },

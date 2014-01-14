@@ -9,9 +9,11 @@
     <script src="js/jquery-ui-1.8.16.custom.min.js"></script>
     <script>
         $(document).ready(function () {
-            // jQuery UI Draggable 플러그인을 사용합니다.
+            // jQuery UI Draggable 플러그인을 사용합니다. 옵션 객체 매개변수 생략 가능(draggable())
             $('div.box').draggable({
+            	// 옵션
                 grid: [102, 102],
+                // 이벤트
                 stop: function (event, ui) {
                     alert(ui.offset.top + ' : ' + ui.offset.left);
                 }

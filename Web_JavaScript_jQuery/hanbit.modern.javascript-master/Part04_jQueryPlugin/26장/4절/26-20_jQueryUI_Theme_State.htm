@@ -18,8 +18,9 @@
             reset();
 
             // jQuery UI Button 플러그인을 사용합니다.
+            // radio를 jQuery UI Button으로 바꿈
             $('#radio').buttonset();
-                
+
             // 이벤트를 연결합니다.
             $('button').click(function () { reset(); });
             $('#radio > input').change(function () {
