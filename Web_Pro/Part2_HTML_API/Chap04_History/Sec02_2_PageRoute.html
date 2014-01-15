@@ -3,31 +3,31 @@
 	<head>
 		<title>페이지 라우트</title>
 		<meta charset='utf-8' />
-		
+
 		<!-- 모듈 구현 -->
+		<!-- 이 모듈은 sammy.js의 get 요청 매개변수 처리기능을 직접 구현해 본 것임 -->
 		<script>
 			// 익명함수 실행(클로저)
 			(function() {
-				// 변수 선언
 				var router = { };
-				
+
 				// location에 get 메소드 추가
 				location.get = function(url, callback) {
 					// router 객체에 콜백 함수를 추가
-					// router에 현 url이 있으면 
+					// router에 현 url이 있으면
 					if(router[url]) {
 						router[url].push(callback);
 					} else {
 						// 함수변수 callback이 새로운 배열의 첫 번째 요소(즉 초기화)
 						router[url] = [callback];
 					}
-					
+
 					// 체인 형식으로 사용하기 위해 리턴
 					return location;
 				};
-				
+
 				// 이벤트 연결
-				window.addEventListener('hashchange', function(url, callback) {
+				window.addEventListener('hashchange', function() {
 					if(router[location.hash]) {
 						router[location.hash].forEach(function(item) {
 							item();
@@ -36,7 +36,7 @@
 				});
 			})();
 		</script>
-		
+
 		<!-- 진행 코드 -->
 		<script>
 			window.onload = function() {
@@ -50,7 +50,7 @@
 				}).get('#/blue', function() {
 					document.body.style.background = 'blue';
 				});
-				
+
 				// 초기 페이지로 이동
 				location.hash = '#/';
 			};
