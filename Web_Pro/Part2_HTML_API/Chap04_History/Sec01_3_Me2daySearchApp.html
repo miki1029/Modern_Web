@@ -1,8 +1,22 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>트위터 검색 애플리케이션</title>
 		<meta charset='utf-8' />
+		<title>미투데이 검색 애플리케이션</title>
+		<style>
+			* { margin:0px; padding:0px; }
+			section div {
+				margin:10px;
+				padding:10px;
+				border-width:3px;
+				border-style:solid;
+				border-color:#9F9F9F;
+				border-radius:10px;
+			}
+			section div > .date {
+				float:right;
+			}
+		</style>
 		<link rel="stylesheet" href="bootstrap.css" />
 		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="sammy.js"></script>
@@ -15,31 +29,33 @@
 				this.get('#/search', function() {
 					// 입력 양식의 내용을 제거합니다.
 					$('input[type="text"]').val('');
-					
+
 					// 변수를 선언합니다.
-					var keyword = this.params['keyword'];
-					
+					var id = this.params['id'];
+
 					// Ajax 요청을 수행합니다.
-					$.ajax('http://me2day.net/api/get_posts/' + keyword + '.json?callback=?', {
+					$.ajax('http://me2day.net/api/get_posts/' + id + '.json', {
 						dataType: 'JSONP',
 						success: function(data) {
 							// 화면에서 기존 데이터를 제거합니다.
 							$('#content').empty();
-							
+
 							// 요소를 생성합니다.
-							data.results.forEach(function(item) {
-								var output = '';
-								output += '<h4>' + item.from_user + '</h4>';
-								output += '<p>' + item.text + '</p>';
-								output += '<hr />';
-								
-								$('#content').append(output);
+							$.each(data, function(index, item) {
+								// 문서 객체를 생성합니다.
+								var a = $('<h2></h2>').html(item.author.id);
+								var b = $('<img />').attr('src', item.author.face);
+								var c = $('<p></p>').addClass('date').html(item.pubDate);
+								var d = $('<p></p>').html(item.body);
+								var e = $('<img />').attr('src', item.media.photoUrl);
+
+								$('<div></div>').append(a,b,c,d,e).appendTo('#content');
 							});
 						}
 					});
 				});
 			});
-			
+
 			// 애플리케이션 실행
 			$(document).ready(function() {
 				app.run('#/');
@@ -48,15 +64,15 @@
 	</head>
 	<body class="container">
 		<header>
-			<h1>Twitter Search</h1>
+			<h1>me2day Search</h1>
 			<form action="#/search" method="get" class="form-inline">
-				<input name="keyword" type="text" />
+				<input name="id" type="text" />
 				<input type="submit" value="Search" class="btn" />
 			</form>
 		</header>
 		<hr />
 		<section id="content">
-			
+
 		</section>
 	</body>
 </html>
