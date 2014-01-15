@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>미투데이 검색 애플리케이션</title>
+		<link rel="stylesheet" href="bootstrap.css" />
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+		<!-- 모듈 구현 -->
+		<script>
+			// hashSubmit() 구현
+			// ?request=req#hash 형식을
+			// #hash?request=req 형식으로 바꿈
+			function hashSubmit() {
+				var id = $('input[type="text"]').val();
+				location.href = location.pathname + '#/search?id=' + id;
+			}
+
+			// location.get 구현
+			(function() {
+				var router = { };
+
+				// location에 get 메소드 추가
+				location.get = function(hash, callback) {
+					// router 객체에 콜백 함수를 추가
+					// router에 현 hash가 있으면
+					if(router[hash]) {
+						router[hash].push(callback);
+					} else {
+						// 함수변수 callback이 새로운 배열의 첫 번째 요소(즉 초기화)
+						router[hash] = [callback];
+					}
+
+					// 체인 형식으로 사용하기 위해 리턴
+					return location;
+				};
+
+				// 이벤트 연결
+				window.addEventListener('hashchange', function() {
+					// 기존 PageRoute 모듈에서 요청매개변수 관련 문제 보완
+					var hash = location.hash.replace(/\?.*/, '');
+					if(router[hash]) {
+						router[hash].forEach(function(item) {
+							item();
+						});
+					}
+				});
+			})();
+		</script>
+
+		<!-- 진행 코드 -->
+		<script>
+			$(document).ready(function() {
+				location.get('#/', function() {
+					$('#content').empty();
+				}).get('#/search', function() {
+					$('input[type="text"]').val('');
+
+					// id값이 location.search에 있어야 하지만 hash로 변환했으므로 hash에서 replace
+					// location.hash의 값은 #/search?id=blur 이고, blur만 추출
+					var id = location.hash.replace(/.*id=/, '');
+
+					$.ajax('http://me2day.net/api/get_posts/' + id + '.json', {
+						dataType: 'jsonp',
+						success: function(data) {
+							$('#content').empty();
+
+							$.each(data, function(index, item) {
+								var a = $('<h2></h2>').html(item.author.id);
+								var b = $('<p></p>').addClass('date').html(item.pubDate);
+								var c = $('<p></p>').html(item.body);
+								var d = $('<hr />');
+
+								$('#content').append(a,b,c,d);
+							});
+						}
+					});
+				});
+
+				location.hash = '#/';
+			});
+		</script>
+	</head>
+	<body class="container">
+		<header>
+			<h1>me2day Search</h1>
+			<form action="#/search" method="get" class="form-inline" onsubmit="hashSubmit(); return false;">
+				<input name="id" type="text" />
+				<input type="submit" value="Search" class="btn" />
+			</form>
+		</header>
+		<hr />
+		<section id="content">
+
+		</section>
+	</body>
+</html>
