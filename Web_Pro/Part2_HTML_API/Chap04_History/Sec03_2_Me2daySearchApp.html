@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>미투데이 검색 애플리케이션</title>
+		<link rel="stylesheet" href="bootstrap.css" />
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+			// 처음 해시로 접속했을 경우
+			window.onload = function() {
+				var id = location.hash.replace(/.*id=/,'');
+				if(id) {
+					$.ajax('http://me2day.net/api/get_posts/' + id + '.json', {
+						dataType: 'JSONP',
+						success: function(data) {
+							$('#content').empty();
+
+							$.each(data, function(index, item) {
+								var a = $('<h2></h2>').html(item.author.id);
+								var b = $('<p></p>').addClass('date').html(item.pubDate);
+								var c = $('<p></p>').html(item.body);
+								var d = $('<hr />');
+
+								$('#content').append(a,b,c,d);
+							});
+
+							history.pushState(data, 'Search - ' + id, '#/search?id=' + id);
+						}
+					});
+				}
+			};
+
+			$(window).on('popstate', function(event) {
+				$('#content').empty();
+
+				if(event.originalEvent.state) {
+					$.each(event.originalEvent.state, function(index, item) {
+						var a = $('<h2></h2>').html(item.author.id);
+						var b = $('<p></p>').addClass('date').html(item.pubDate);
+						var c = $('<p></p>').html(item.body);
+						var d = $('<hr />');
+
+						$('#content').append(a,b,c,d);
+					});
+				}
+			});
+
+			$(document).ready(function() {
+				// submit
+				$('form').submit(function(event) {
+					var id = $('input[type="text"]').val();
+
+					$('input[type="text"]').val('');
+
+					$.ajax('http://me2day.net/api/get_posts/' + id + '.json', {
+						dataType: 'JSONP',
+						success: function(data) {
+							$('#content').empty();
+
+							$.each(data, function(index, item) {
+								var a = $('<h2></h2>').html(item.author.id);
+								var b = $('<p></p>').addClass('date').html(item.pubDate);
+								var c = $('<p></p>').html(item.body);
+								var d = $('<hr />');
+
+								$('#content').append(a,b,c,d);
+							});
+
+							history.pushState(data, 'Search - ' + id, '#/search?id=' + id);
+						}
+					});
+
+					event.preventDefault();
+				});
+			});
+		</script>
+	</head>
+	<body class="container">
+		<header>
+			<h1>me2day Search</h1>
+			<form action="#/search" method="get" class="form-inline">
+				<input name="id" type="text" />
+				<input type="submit" value="Search" class="btn" />
+			</form>
+		</header>
+		<hr />
+		<section id="content">
+
+		</section>
+	</body>
+</html>
