@@ -3,20 +3,6 @@
 	<head>
 		<meta charset='utf-8' />
 		<title>미투데이 검색 애플리케이션</title>
-		<style>
-			* { margin:0px; padding:0px; }
-			section div {
-				margin:10px;
-				padding:10px;
-				border-width:3px;
-				border-style:solid;
-				border-color:#9F9F9F;
-				border-radius:10px;
-			}
-			section div > .date {
-				float:right;
-			}
-		</style>
 		<link rel="stylesheet" href="bootstrap.css" />
 		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="sammy.js"></script>
@@ -44,12 +30,11 @@
 							$.each(data, function(index, item) {
 								// 문서 객체를 생성합니다.
 								var a = $('<h2></h2>').html(item.author.id);
-								var b = $('<img />').attr('src', item.author.face);
-								var c = $('<p></p>').addClass('date').html(item.pubDate);
-								var d = $('<p></p>').html(item.body);
-								var e = $('<img />').attr('src', item.media.photoUrl);
+								var b = $('<p></p>').addClass('date').html(item.pubDate);
+								var c = $('<p></p>').html(item.body);
+								var d = $('<hr />');
 
-								$('<div></div>').append(a,b,c,d,e).appendTo('#content');
+								$('#content').append(a,b,c,d);
 							});
 						}
 					});
