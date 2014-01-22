@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>Blob 객체의 생성과 접근</title>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+			var blob = new Blob(['Normal Text'], { type: 'text/plain' });
+
+			var request = new XMLHttpRequest();
+			request.open('GET', URL.createObjectURL(blob), false);
+			request.send();
+
+			alert(request.response);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
