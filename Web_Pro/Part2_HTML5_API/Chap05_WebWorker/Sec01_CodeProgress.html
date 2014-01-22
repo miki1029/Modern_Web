@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>코드 진행</title>
+		<script>
+			/*
+			var request = new XMLHttpRequest();
+
+			request.onreadystatechange = function() {
+				if(request.readyState == 4) {
+					alert(request.response);
+				}
+			};
+
+			request.open('GET', 'HTMLPage.html', true);
+
+			request.send();
+
+			//while(true){}	// 코드가 계속 실행중이므로 ajax요청이 완료되어도 alert창이 뜨지 않음.
+
+			console.log('요청을 보냈습니다');
+			*/
+
+			// Code 5-3
+			// while(코드의 실행흐름)이 끝나지 않았으므로 실행되지 않음
+			setTimeout(function() {
+				for(var i=0; i<100; i++) {
+					document.write('A');
+				}
+			}, 0);
+
+			while(true){}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
