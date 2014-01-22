@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>텍스트 파일 출력</title>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+		</script>
+	</head>
+	<body>
+		<input id="file-input" type="file" />
+		<script>
+			var fileInput = document.getElementById('file-input');
+			fileInput.onchange = function() {
+				var files = this.files;
+
+				for(var i=0; i<files.length; i++) {
+					var file = files.item(i);	// files[i]
+
+					var reader = new FileReader();
+					reader.onload = function() {
+						console.log(reader.result);
+					};
+					reader.readAsText(file);
+				}
+			};
+		</script>
+	</body>
+</html>

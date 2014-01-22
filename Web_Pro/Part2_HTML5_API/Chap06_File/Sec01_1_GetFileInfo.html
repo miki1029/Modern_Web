@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>파일 정보 수집</title>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+		</script>
+	</head>
+	<body>
+		<input id="file-input" type="file" multiple="multiple" />
+		<script>
+			var fileInput = document.getElementById('file-input');
+			fileInput.onchange = function() {
+				var files = this.files;
+
+				for(var i=0; i<files.length; i++) {
+					var file = files[i];
+					var output = '';
+					output += '<p>name: ' + file.name + '</p>';
+					output += '<p>type: ' + file.type + '</p>';
+					output += '<p>size: ' + file.size + '</p>';
+					output += '<p>lastModifiedDate: ' + file.lastModifiedDate + '</p>';
+
+					document.body.innerHTML += output;
+				}
+			};
+		</script>
+	</body>
+</html>

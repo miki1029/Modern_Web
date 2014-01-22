@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>이미지 파일 출력</title>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+		</script>
+	</head>
+	<body>
+		<input id="file-input" type="file" />
+		<script>
+			var fileInput = document.getElementById('file-input');
+			fileInput.onchange = function() {
+				var files = this.files;
+				for(var i=0; i<files.length; i++) {
+					/*
+					 * reader를 이용한 방식
+					 * 같은 이미지를 여러 번 출력할 때는 비추
+					 * reader.result : 엄청난 길이의 문자열 낭비*/
+					/*
+					var file = files.item(i);	// files[i]
+
+					var reader = new FileReader();
+					reader.onload = function() {
+						var image = document.createElement('img');
+						image.width = 400;
+						image.height = 300;
+						image.src = reader.result; // data:image/png;base64로 시작하는 엄청나게 긴 문자열
+
+						document.body.appendChild(image);
+					};
+					reader.readAsDataURL(file);
+					*/
+
+					// createObejctURL() 메소드를 이용한 방법
+					var file = files.item(i);
+					var objectURL = URL.createObjectURL(file);
+
+					var image = document.createElement('img');
+					image.width = 400;
+					image.height = 300;
+					image.src = objectURL; // blob:http로 시작하는 간단한 문자열
+
+					document.body.appendChild(image);
+				}
+			};
+		</script>
+	</body>
+</html>
