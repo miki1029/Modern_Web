@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>파일 드래그</title>
+		<style>
+			#dropzone {
+				height: 100px;
+				border: 3px solid black;
+			}
+		</style>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="prefix.js"></script>
+		<script>
+			removePrefix(window, 'URL');
+		</script>
+		<script>
+			$(document).ready(function() {
+				$('#dropzone').on({
+					dragover: function(event) {
+						event.preventDefault(); // dragover의 기본 이벤트를 제거해야지 drop 이벤트를 사용할 수 있음
+					},
+					drop: function(event) {
+						var files = event.originalEvent.dataTransfer.files;
+						// jQuery가 drop이벤트를 정식으로 지원하지 않음.
+						// event.originalEvent는 일반 javascript의 event와 같음.
+						// 즉 jQuery를 사용하지 않으면 event.dataTransfer.files
+
+						for(var i=0; i<files.length; i++) {
+							var file = files[i];
+
+							$('<img />', {
+								src: URL.createObjectURL(file)
+							}).appendTo('body');
+						}
+
+						event.preventDefault(); // 파일에 대한 drop의 기본 이벤트는 파일을 불러 오는 것. 제거해야 함
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="dropzone"></div>
+	</body>
+</html>

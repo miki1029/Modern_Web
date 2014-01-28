@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>요소 드래그</title>
+		<style>
+		/*	h1 { user-select: none; } */
+			h1 { display: inline; }
+			h1.active { background: red; }
+
+			div {
+				width: 300px; height: 100px;
+				border: 3px solid black;
+			}
+			div.active {
+				border: 3px dashed black;
+				background: orange;
+			}
+		</style>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('h1').on({
+					dragstart: function(event) {
+						$(this).addClass('active');
+					},
+					dragend: function(event) {
+						$(this).removeClass('active');
+					}
+				});
+				/* 자신이
+				 * drag : 드래그 중일 때
+				 * dragstart : 드래그를 시작했을 때
+				 * dragend : 드래그를 종료했을 때
+				 */
+
+				$('div').on({
+					dragenter: function(event) {
+						$(this).addClass('active');
+					},
+					dragleave: function(event) {
+						$(this).removeClass('active');
+					},
+					dragover: function(event) {
+						event.preventDefault();
+					},
+					drop: function(event) {
+						$('h1.active').appendTo(this);
+					}
+				});
+				/* 자신의 영역에서
+				 * dragenter : 드래그가 들어왔을 때
+				 * dragleave : 드래그가 벗어날 때
+				 * dragover : 드래그가 일어나고 있을 때
+				 * drop : 드래그가 종료했을 때
+				 */
+			});
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<h1 draggable="true">Drag it!</h1>
+	</body>
+</html>
