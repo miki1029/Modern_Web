@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>stats.js 라이브러리(FPS 측정)</title>
+		<script src="prefix.js"></script>
+		<script src="Stats.js"></script>
+		<script>
+			removePrefix(window, 'requestAnimationFrame');
+		</script>
+	</head>
+	<body>
+		<script>
+			var stats = new Stats();
+
+			stats.setMode(0);
+			// 0: FPS, 1:SPF
+			stats.domElement.style.position = 'absolute';
+			stats.domElement.style.left = '10px';
+			stats.domElement.style.top = '10px';
+
+			document.body.appendChild(stats.domElement);
+
+			var animate = function() {
+				stats.begin();
+
+				// 애니메이션 코드
+
+
+				stats.end();
+				requestAnimationFrame(animate);
+			};
+			requestAnimationFrame(animate);
+		</script>
+	</body>
+</html>

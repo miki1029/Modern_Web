@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>tween.js 라이브러리</title>
+		<script src="prefix.js"></script>
+		<script src="Tween.js"></script>
+		<script>
+			removePrefix(window, 'requestAnimationFrame');
+			removePrefix(window, 'cancelAnimationFrame');
+		</script>
+	</head>
+	<body>
+		<script>
+			// 문서 객체 생성
+			var label = document.createElement('h1');
+			label.textContent = 'Label';
+			label.style.position = 'absolute';
+			document.body.appendChild(label);
+
+			// Tween 객체 생성
+			var tween = new TWEEN.Tween({ rint: 0 });
+			tween.to({ rint: 500 }, 2000);
+			tween.easing(TWEEN.Easing.Elastic.InOut);
+			tween.onUpdate(function() {
+				console.log(this.rint);
+				label.style.left = this.rint + 'px';
+			});
+			tween.start();
+
+			// animate() 함수 선언
+			var animate = function() {
+				requestAnimationFrame(animate);
+				TWEEN.update();
+			};
+
+			// animate() 실행
+			requestAnimationFrame(animate);
+		</script>
+	</body>
+</html>
