@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>토이 카메라</title>
+		<script src="prefix.js"></script>
+		<script src="glfx.js"></script>
+		<script>
+			removePrefix(navigator, 'getUserMedia');
+		</script>
+		<script>
+			window.addEventListener('load', function() {
+				navigator.getUserMedia({
+					video: true,
+					audio: true
+				},function(stream) {
+					var source = URL.createObjectURL(stream);
+					var video = document.createElement('video');
+					video.src = source;
+					video.autoplay = true;
+
+					video.width = 640;
+					video.height = 480;
+
+					try {
+						var canvas = fx.canvas();
+					} catch(e) {
+						alert(e);
+						return;
+					}
+
+					setInterval(function() {
+						var texture = canvas.texture(video);
+						canvas.draw(texture).dotScreen(0, 0, 1, 5).update();
+						document.body.appendChild(canvas);
+					}, 1000/60);
+				});
+			});
+		</script>
+	</head>
+	<body></body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>미디어 장치 접근</title>
+		<style>
+			video {
+				-webkit-filter: contrast(70%) invert(80%);
+				filter: contrast(70%) invert(80%);
+			}
+		</style>
+		<script src="prefix.js"></script>
+		<script>
+			removePrefix(navigator, 'getUserMedia');
+		</script>
+		<script>
+			window.addEventListener('load', function() {
+				navigator.getUserMedia({
+					video: true,
+					audio: true
+				}, function(stream) {
+					var source = URL.createObjectURL(stream);
+					var video = document.createElement('video');
+					video.src = source;
+					video.autoplay = true;
+
+					document.body.appendChild(video);
+				});
+			});
+
+			// canvas를 이용
+			/*
+			window.addEventListener('load', function() {
+				navigator.getUserMedia({
+					video: true,
+					audio: true
+				}, function(stream) {
+					var source = URL.createObjectURL(stream);
+					var video = document.createElement('video');
+					video.src = source;
+					video.autoplay = true;
+
+					// 캔버스 설정
+					var canvas = document.createElement('canvas');
+					var context = canvas.getContext('2d');
+					canvas.width = 640;
+					canvas.height = 480;
+
+					document.body.appendChild(canvas);
+
+					setInterval(function() {
+						context.drawImage(video, 0, 0);
+						//requestAnimationFrame(animate);
+					}, 1000/60);
+				});
+			});*/
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
