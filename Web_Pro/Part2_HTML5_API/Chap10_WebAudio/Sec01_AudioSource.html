@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>오디오 소스</title>
+		<script src="prefix.js"></script>
+		<script>
+			removePrefix(window, 'AudioContext');
+		</script>
+		<script>
+			var context = new AudioContext();
+
+			var request = new XMLHttpRequest();
+			request.responseType = 'arraybuffer';
+			request.onload = function (){
+				context.decodeAudioData(request.response, function(buffer) {
+					// 노드를 생성
+					var source = context.createBufferSource();
+					var speaker = context.destination;
+
+					// 노드를 설정
+					source.buffer = buffer;
+
+					// 노드를 연결
+					source.connect(speaker);
+
+					// 음악 재생
+					source.noteOn(0);
+				});
+			};
+			request.open('GET', 'Kalimba.mp3', true);
+			request.send();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
