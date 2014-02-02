@@ -1,0 +1,11 @@
+﻿CACHE MANIFEST
+
+# 캐시를 설정합니다.
+CACHE:
+Sec02_AppCache.html
+bootstrap.css
+happy.jpg
+
+# 캐시에 저장하지 않을 요소를 설정합니다.
+NETWORK:
+offline.js
